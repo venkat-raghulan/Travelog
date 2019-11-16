@@ -5,10 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>TraveLog</title>
+    {{#each css}}
+    <link rel="stylesheet" href="./css/{{this}}.css">
+    {{/each}}
 </head>
+{{!-- Venkat - On loading, we will have a log in page.
+  The page will look similar to the Ironhack login (Just a center aligned log in form).
+  Upon logging in the nav-bar partial will be displayed with different options depending on the user type e.g. Admin, User,  Manager
+ --}}
 
 <body>
+
+    {{{body}}}
 
 </body>
 

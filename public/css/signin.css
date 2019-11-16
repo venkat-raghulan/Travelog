@@ -1,0 +1,28 @@
+.main-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.sign-in-container {
+  border: 3px solid black;
+  width: 30%;
+  height: 60%;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.site-logo {
+  height: 100px;
+  width: 100px;
+  margin: auto;
+}
+
+.sign-in-form {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  width: 60%;
+}
