@@ -1,12 +1,16 @@
 <div class="main-container">
     <section class="sign-in-container">
-        <img src="" alt="site-logo" class="site-logo">
-        <form method="get" class="sign-in-form">
+        <div class="site-logo">
+            <img src="https://res.cloudinary.com/dsj26eqz4/image/upload/v1574017108/travellog_cctkdp.png"
+                alt="site-logo">
+        </div>
+        <form action="/" method="post" class="sign-in-form">
             <label for="email">Email Address</label>
             <input type="email" name="email" id="email" required>
             <label for="password">Password</label>
             <input type="password" name="password" id="password" required>
-            <button>Log In</button>
+            <button class="log-in">Log In</button>
         </form>
+        <span>Not yet Registered? <a href="/signup">Click Here</a></span>
     </section>
 </div>

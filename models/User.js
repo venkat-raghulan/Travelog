@@ -7,9 +7,11 @@ const userSchema = new Schema({
   employeeID: String,
   email: String,
   contactNumber: String,
+  password: String,
   userType: {
     type: String,
-    enum: ["Admin", "Planner", "Manager", "BDM"]
+    enum: ["Admin", "Planner", "Manager", "BDM"],
+    default: "BDM"
   },
   trips: Schema.Types.ObjectId
 });

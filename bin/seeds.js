@@ -6,6 +6,7 @@ const firstUser = [
     employeeID: "ES3321RES110",
     email: "andrew@webtest.co.uk",
     contactNumber: "06 05 04 01 02",
+    password: "andrew",
     userType: "Admin"
   }
 ];

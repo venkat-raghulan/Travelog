@@ -1,0 +1,92 @@
+.main-section {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  width: 100%;
+  padding: 10px;
+}
+
+.welcome-section {
+  width: 80%;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.welcome-section h1 {
+  font-size: 50px;
+  margin-bottom: 25px;
+}
+
+.welcome-section p {
+  font-size: 25px;
+  margin-bottom: 15px;
+}
+
+.logo-col {
+  color: #f05136;
+}
+
+.signup-section {
+  width: 75%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.signup-form input {
+  margin-bottom: 10px;
+  margin-top: 7px;
+  height: 40px;
+  font-size: 20px;
+  text-align: justify;
+  border: none;
+  border-bottom: 1px solid grey;
+  padding-left: 5px;
+}
+.signup-form label {
+  font-size: 20px;
+}
+
+.signup-form input:focus {
+  background-color: #f05136;
+  color: white;
+}
+
+.signup-form button {
+  margin: 20px auto;
+  width: 60%;
+  height: 40px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 1px 1px grey;
+  /* transition: 1s linear; */
+}
+
+.signup-form button:active {
+  transform: scale(0.97);
+}
+
+.error .success {
+  max-width: 320px;
+  padding: 20px;
+  text-align: center;
+  border-radius: 0.3rem;
+  margin-bottom: 10px;
+}
+
+.error {
+  color: #802b31;
+  background: #f8d6da;
+  box-shadow: -0.3px 0.1px 2.4px 0.1px #802b31;
+}
+
+.success {
+  color: #216136;
+  background: #d4edda;
+  box-shadow: -0.3px 0.1px 2.4px 0.1px #216136;
+}

@@ -1,0 +1,29 @@
+<div class="main-section">
+    <section class="welcome-section">
+        <h1>
+            Welcome to <span class="logo-col">Trave</span>Log
+        </h1>
+        <p>
+            Please fill in the details below to create an account and be able to access the platform.
+        </p>
+    </section>
+    <section class="signup-section">
+        <form action="/signup" method="POST" class="signup-form">
+            <label for="name">Full Name</label>
+            <input type="text" name="name" id="name" placeholder="Andrew Brown" required>
+            <label for="profilePicture">Profile Picture</label>
+            <input type="text" name="profilePicture" id="profilePicture" placeholder="Img URL" required>
+            <label for="employeeID">Employee ID</label>
+            <input type="text" name="employeeID" id="employeeID" placeholder="TLR44050" required>
+            <label for="email">Email Address</label>
+            <input type="email" name="email" id="email" placeholder="example@travelog.com" required>
+            <label for="contactNumber">Contact Number</label>
+            <input type="text" name="contactNumber" id="contactNumber" placeholder="+33 (0) 65 90 15 23" required>
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" placeholder="******" required>
+            {{> flash}}
+            <button>Create Profile</button>
+        </form>
+        <span>Already have an account? <a href="/">Please Sign In</a></span>
+    </section>
+</div>
