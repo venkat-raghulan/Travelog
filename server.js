@@ -43,10 +43,12 @@ const mainRouter = require("./routes/main");
 const auth = require("./routes/auth/auth");
 const userRouter = require("./routes/user");
 const adminRouter = require("./routes/admin");
+const plannerRouter = require("./routes/planner");
 app.use(mainRouter);
 app.use(auth);
 app.use(userRouter);
 app.use(adminRouter);
+app.use(plannerRouter);
 
 app.listen(process.env.PORT, () => {
   console.log(`app started at ${process.env.SITE_URL}:${process.env.PORT}`);
