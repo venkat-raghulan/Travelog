@@ -1,0 +1,30 @@
+.main-container {
+  height: calc(100vh - 80px);
+  width: 100%;
+  display: flex;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.user-events {
+  width: 40%;
+  border: 1px solid pink;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-event-more {
+  width: 60%;
+}
+
+.assignment-title {
+  width: 90%;
+  font-size: 30px;
+  border: 1px solid grey;
+  border-radius: 7px;
+  box-shadow: 1px 1px grey;
+  margin: 10px 0;
+  padding: 10px;
+  overflow: hidden;
+}

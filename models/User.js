@@ -14,11 +14,9 @@ const userSchema = new Schema({
       enum: ["Admin", "Planner", "BDM", "Trainer"],
       default: "BDM"
     }
-  ],
-  // trips: [{type: Schema.Types.ObjectId, ref: 'Trip'}] 
+  ]
 });
 
 const userModel = mongoose.model("user", userSchema);
 
 module.exports = userModel;
-

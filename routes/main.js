@@ -9,7 +9,13 @@ router.get("/", (req, res) => {
 
 router.get("/signup", (req, res) => {
   res.render("signup", {
-    css: ["signup", "reset"]
+    css: ["userProfile"]
+  });
+});
+
+router.get("/logout", (req, res) => {
+  req.session.destroy(() => {
+    res.redirect("/");
   });
 });
 
