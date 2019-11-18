@@ -6,5 +6,15 @@ const tripModel = require("./../models/Trip");
 module.exports = router;
 
 router.get("/planner", (req, res, next) => {
-  res.render("plannerHome");
+  tripModel
+    .find()
+    .then(dbRes => {
+      console.log("here");
+      console.log(dbRes);
+      res.render("plannerHome", {
+        trips: dbRes,
+        css: ["adminHome", "main", "reset"]
+      });
+    })
+    .catch();
 });

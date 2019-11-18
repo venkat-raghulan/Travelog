@@ -8,16 +8,17 @@ router.get("/admin", (req, res, next) => {
   collegeModel
     .find()
     .then(dbRes1 => {
-      userModel.find().then(dbRes => {
-        res
-          .render("adminHome", {
+      userModel
+        .find()
+        .then(dbRes => {
+          res.render("adminHome", {
             users: dbRes,
             colleges: dbRes1,
             css: ["adminHome", "main", "reset"],
             scripts: ["adminHome"]
-          })
-          .catch(dbErr => console.log(dbErr));
-      });
+          });
+        })
+        .catch(dbErr => console.log(dbErr));
     })
     .catch(dbErr1 => console.log(dbErr1));
 });
