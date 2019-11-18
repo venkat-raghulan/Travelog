@@ -31,8 +31,7 @@ router.get("/edit-profile/:id", userProtect, (req, res, next) => {
     .findOne({ _id: req.params.id })
     .then(dbRes => {
       res.render("edit-profile", {
-        user: dbRes,
-        css: ["test"]
+        user: dbRes
       });
     })
     .catch(dbErr => console.log(dbErr));
