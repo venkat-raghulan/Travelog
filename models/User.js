@@ -8,18 +8,17 @@ const userSchema = new Schema({
   email: String,
   contactNumber: String,
   password: String,
-  userType: {
-    type: String,
-    enum: ["Admin", "Planner", "Manager", "BDM"],
-    default: "BDM"
-  },
-  trips: Schema.Types.ObjectId
+  userType: [
+    {
+      type: String,
+      enum: ["Admin", "Planner", "BDM", "Trainer"],
+      default: "BDM"
+    }
+  ],
+  // trips: [{type: Schema.Types.ObjectId, ref: 'Trip'}] 
 });
 
 const userModel = mongoose.model("user", userSchema);
 
 module.exports = userModel;
 
-// trainer as a role in usertype
-// read me file with .env details
-// should we store trips in user table - we can decide on this later?

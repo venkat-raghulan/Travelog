@@ -5,12 +5,12 @@ const tripSchema = new Schema({
   tripID: String,
   oifID: String,
   college: {
-    type: String,
+    type: Schema.Types.ObjectId,
     ref: "College"
   },
   tripDates: [{ type: Date }],
   numberOfBatches: Number,
-  sessionInfo: Array,
+  sessionInfo: [{ name: String, timings: String }],
   trainers: [{ type: Schema.Types.ObjectId, ref: "user" }]
 });
 

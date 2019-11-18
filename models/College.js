@@ -6,7 +6,7 @@ const collegeSchema = new Schema({
   collegeName: String,
   collegeAddress: String,
   city: String,
-  BDM: { type: Schema.Types.ObjectId, ref: "User" },
+  BDM: { type: Schema.Types.ObjectId, ref: 'User'},
   collegeSPOC: { name: String, phone: String }
 });
 

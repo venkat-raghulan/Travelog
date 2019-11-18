@@ -9,8 +9,6 @@ router.get("/admin", (req, res, next) => {
     .find()
     .then(dbRes1 => {
       userModel.find().then(dbRes => {
-        console.log("here");
-        console.log(dbRes);
         res
           .render("adminHome", {
             users: dbRes,
