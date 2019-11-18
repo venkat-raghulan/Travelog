@@ -1,0 +1,26 @@
+<table>
+    <thead>
+        <tr class="table-row">
+            <th class="table-head">
+                Batch/ Session
+            </th>
+            {{#create-rows noOfBatches }}
+            {{/create-rows}}
+        </tr>
+    </thead>
+
+    <tbody>
+        {{#each trip.sessionInfo}}
+        <tr class="table-row">
+            <td class="table-division">
+                {{this.name}} / {{this.timings}}
+            </td>
+            {{#create-inputs "3" }}
+            {{/create-inputs}}
+        </tr>
+        {{/each}}
+
+
+    </tbody>
+
+</table>

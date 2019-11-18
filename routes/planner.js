@@ -9,12 +9,24 @@ router.get("/planner", (req, res, next) => {
   tripModel
     .find()
     .then(dbRes => {
-      console.log("here");
-      console.log(dbRes);
       res.render("plannerHome", {
         trips: dbRes,
         css: ["adminHome", "main", "reset"]
       });
     })
     .catch();
+});
+
+router.get("/planthetrip/:id", (req, res) => {
+  tripModel
+    .findOne({ _id: req.params.id })
+    .then(dbRes => {
+      console.log(dbRes);
+      res.render("planSchedule", {
+        trip: dbRes,
+        noOfBatches: dbRes.numberOfBatches,
+        css: ["adminHome", "main", "reset"]
+      });
+    })
+    .catch(dbErr => console.log(dbErr));
 });
