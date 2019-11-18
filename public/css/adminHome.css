@@ -73,6 +73,7 @@
     align-content: center;
     align-items: center;
     width: 25%;
+    flex-direction: column;
 }
 
 .table-head {
