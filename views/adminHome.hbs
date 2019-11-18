@@ -1,0 +1,41 @@
+<h1>Admin Dashboard</h1>
+
+<!-- Tab links -->
+<div class="tab">
+    <button class="tablinks" onclick="openTab(event, 'Users')">Users</button>
+    <button class="tablinks" onclick="openTab(event, 'Colleges')">Colleges</button>
+</div>
+
+<!-- Tab content -->
+<div id="Users" class="tabcontent">
+    <thead>
+        <tr class="table-row">
+            <th class="table-head">Name</th>
+            <th class="table-head">Employee ID</th>
+            <th class="table-head">email</th>
+            <th class="table-head">contact</th>
+            <th class="table-head">Roles</th>
+            <th class="table-head">Edit</th>
+            <th class="table-head">Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each users}}
+        <tr class="table-row">
+            {{> dashboard_row}}
+        </tr>
+        {{/each}}
+        {{#unless users}}
+        <tr>
+            <td colspan="6">No users yet</td>
+        </tr>
+        {{/unless}}
+    </tbody>
+    </table>
+
+
+</div>
+
+<div id="Colleges" class="tabcontent">
+    Colleges CRUD table here
+</div>

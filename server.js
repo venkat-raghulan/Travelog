@@ -42,9 +42,11 @@ hbs.registerPartials(path.join(__dirname, "views/partials"));
 const mainRouter = require("./routes/main");
 const auth = require("./routes/auth/auth");
 const userRouter = require("./routes/user");
+const adminRouter = require("./routes/admin");
 app.use(mainRouter);
 app.use(auth);
 app.use(userRouter);
+app.use(adminRouter);
 
 app.listen(process.env.PORT, () => {
   console.log(`app started at ${process.env.SITE_URL}:${process.env.PORT}`);
