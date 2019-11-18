@@ -12,14 +12,14 @@ const firstUser = [
 ];
 
 const mongoose = require("mongoose");
-const sneakerModel = require("../models/User.js");
+const userModel = require("../models/User.js");
 
 mongoose.connect("mongodb://localhost/Travelog", {
   useNewUrlParser: true,
   useCreateIndex: true
 });
 
-sneakerModel
+userModel
   .insertMany(firstUser)
   .then(dbVal => {
     console.log("inserted");

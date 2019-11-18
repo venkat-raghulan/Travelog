@@ -6,10 +6,10 @@ const collegeSchema = new Schema({
   collegeName: String,
   collegeAddress: String,
   city: String,
-  BDM: { type: Schema.Types.ObjectId, ref: Users },
+  BDM: { type: Schema.Types.ObjectId, ref: "User" },
   collegeSPOC: { name: String, phone: String }
 });
 
-const collegeModel = mongoose.model("user", userSchema);
+const collegeModel = mongoose.model("College", collegeSchema);
 
 module.exports = collegeModel;

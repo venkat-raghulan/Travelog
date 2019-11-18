@@ -7,35 +7,60 @@
 </div>
 
 <!-- Tab content -->
-<div id="Users" class="tabcontent">
-    <thead>
-        <tr class="table-row">
-            <th class="table-head">Name</th>
-            <th class="table-head">Employee ID</th>
-            <th class="table-head">email</th>
-            <th class="table-head">contact</th>
-            <th class="table-head">Roles</th>
-            <th class="table-head">Edit</th>
-            <th class="table-head">Delete</th>
-        </tr>
-    </thead>
-    <tbody>
-        {{#each users}}
-        <tr class="table-row">
-            {{> dashboard_row}}
-        </tr>
-        {{/each}}
-        {{#unless users}}
-        <tr>
-            <td colspan="6">No users yet</td>
-        </tr>
-        {{/unless}}
-    </tbody>
+<div id="Users" class="tabcontent big-container manage-items-wrapper">
+    <table class="item-manage-table">
+        <thead>
+            <tr class="table-row">
+                <th class="table-head">Name</th>
+                <th class="table-head">Employee ID</th>
+                <th class="table-head">email</th>
+                <th class="table-head">contact</th>
+                <th class="table-head">Roles</th>
+                <th class="table-head">Edit</th>
+                <th class="table-head">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each users}}
+            <tr class="table-row">
+                {{> dashboard_row_user}}
+            </tr>
+            {{/each}}
+            {{#unless users}}
+            <tr>
+                <td colspan="6">No users yet</td>
+            </tr>
+            {{/unless}}
+        </tbody>
     </table>
-
-
 </div>
 
 <div id="Colleges" class="tabcontent">
-    Colleges CRUD table here
+    <table class="item-manage-table">
+        <thead>
+            <tr class="table-row">
+                <th class="table-head">College ID</th>
+                <th class="table-head">College Name</th>
+                <th class="table-head">College Address</th>
+                <th class="table-head">City</th>
+                <th class="table-head">BDM</th>
+                <th class="table-head">College SPOC Name</th>
+                <th class="table-head">College SPOC phone</th>
+                <th class="table-head">Edit</th>
+                <th class="table-head">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each colleges}}
+            <tr class="table-row">
+                {{> dashboard_row_college}}
+            </tr>
+            {{/each}}
+            {{#unless colleges}}
+            <tr>
+                <td colspan="6">No colleges yet</td>
+            </tr>
+            {{/unless}}
+        </tbody>
+    </table>
 </div>

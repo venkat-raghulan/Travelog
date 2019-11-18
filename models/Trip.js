@@ -11,7 +11,7 @@ const tripSchema = new Schema({
   tripDates: [{ type: Date }],
   numberOfBatches: Number,
   sessionInfo: Array,
-  trainers: [{ type: Schema.Types.ObjectId, ref: Users }]
+  trainers: [{ type: Schema.Types.ObjectId, ref: "user" }]
 });
 
 const tripModel = mongoose.model("user", userSchema);
