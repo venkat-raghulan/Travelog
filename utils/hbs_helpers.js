@@ -14,12 +14,33 @@ hbs.registerHelper("create-rows", function(rows) {
   return tpl;
 });
 
-hbs.registerHelper("create-inputs", function(number) {
+hbs.registerHelper("create-inputs", function(
+  number,
+  trainerlist,
+  session,
+  date
+) {
+  let formattedDate = moment(date).format("YYYY-MM-DD");
+  let dataString = `data-session-name = ${session.name} data-session-timings = ${session.timings} data-date =${formattedDate}`;
+
   let tpl = "";
 
   for (let i = 0; i < number; i++) {
-    tpl += `<td class="table-division">
-      <input type="text" name="" placeholder="Enter trainer"><input type="text" name="" placeholder="Enter Topic">
+    tpl += `<td class="table-division"> 
+      <select class="schedule-input" data-batch=B${i + 1} ${dataString}>
+      <option disabled selected value>Select Trainer</option>`;
+
+    trainerlist.forEach(element => {
+      var options = "";
+      let name = element.name;
+      let id = element.employeeID;
+      options = `<option value = "1">${id}:${name}</option>`;
+      tpl += options;
+    });
+
+    tpl += `</select>
+      <input type="text" class="schedule-input" data-batch=B${i +
+        1} name="topic" placeholder="Enter Topic" ${dataString}>
   </td>`;
   }
   return tpl;

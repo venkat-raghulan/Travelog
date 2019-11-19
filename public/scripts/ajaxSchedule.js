@@ -1,20 +1,33 @@
 const service = axios.create();
 
 const finishedPlan = document.getElementById("plan-status");
+const allInputs = document.querySelectorAll(".schedule-input");
 
-console.log(finishedPlan);
+allInputs.forEach(setupListener);
 
-console.log(service);
+function setupListener(element) {
+  element.addEventListener("change", callback);
+}
 
-// function updatePlanStatus(evt) {
-//   console.log(evt);
-//   console.log(service);
-//   service
-//     .get(`/update-status?status=${evt.target.value}`)
-//     .then(apiRes => {
-//       console.log(evt.value);
-//     })
-//     .catch(apiErr => console.log(apiErr));
-// }
+function callback(evt) {
+  console.log(evt.target.getAttribute("data-batch"));
+  console.log(evt.target.getAttribute("data-session-name"));
+  console.log(evt.target.getAttribute("data-session-timings"));
+  console.log(evt.target.getAttribute("data-date"));
+}
 
-// finishedPlan.oninput = updatePlanStatus;
+function updatePlanStatus(evt) {
+  let str = window.location.pathname;
+
+  var n = str.lastIndexOf("/");
+  var result = str.substring(n + 1);
+
+  service
+    .get(`/update-status/?status=${finishedPlan.checked}&id=${result}`)
+    .then(apiRes => {
+      console.log(apiRes);
+    })
+    .catch(apiErr => console.log(apiErr));
+}
+
+finishedPlan.oninput = updatePlanStatus;

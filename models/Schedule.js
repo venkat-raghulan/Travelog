@@ -4,16 +4,12 @@ const Schema = mongoose.Schema;
 const scheduleSchema = new Schema({
   tripID: { type: Schema.Types.ObjectId, ref: "Trip" },
   date: Date,
-  batchName: String,
+  batchName: { batch: String, details: String },
   sessionName: { name: String, timings: String },
   trainer: { type: Schema.Types.ObjectId, ref: "User" },
-  topic: String,
-  scheduleStatus: {
-    type: Boolean,
-    default: false
-  }
+  topic: String
 });
 
-const collegeModel = mongoose.model("College", collegeSchema);
+const scheduleModel = mongoose.model("Schedule", scheduleSchema);
 
-module.exports = collegeModel;
+module.exports = scheduleModel;

@@ -16,6 +16,10 @@ const tripSchema = new Schema({
   numberOfBatches: Number,
   sessionInfo: [{ name: String, timings: String }],
   trainers: [{ type: Schema.Types.ObjectId, ref: "user" }],
+  scheduleStatus: {
+    type: Boolean,
+    default: false
+  }
 });
 
 const tripModel = mongoose.model("trip", tripSchema);

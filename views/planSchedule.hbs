@@ -3,6 +3,7 @@
     <span class="slider round"></span>
 </label>
 <br>
+<button>Save Plan</button>
 <br>
 
 
@@ -23,11 +24,10 @@
         {{#each ../trip.sessionInfo}}
         <tr class="table-row">
             <td class="table-division">
-
                 {{format-date ../this 'DD/MM/YY' }}<br><br>
                 {{this.name}} / {{this.timings}}
             </td>
-            {{#create-inputs ../../noOfBatches }}
+            {{#create-inputs ../../noOfBatches ../../trip.trainers this ../this}}
             {{/create-inputs}}
         </tr>
         {{/each}}
