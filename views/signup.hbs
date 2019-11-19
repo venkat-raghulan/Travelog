@@ -12,7 +12,8 @@
             <label for="name">Full Name</label>
             <input type="text" name="name" id="name" placeholder="Andrew Brown" required>
             <label for="profilePicture">Profile Picture</label>
-            <input type="text" name="profilePicture" id="profilePicture" placeholder="Img URL" required>
+            <input type="text" name="profilePicture" id="profilePicture" placeholder="Img URL"
+                value="https://res.cloudinary.com/dsj26eqz4/image/upload/v1574017108/travellog_cctkdp.png" required>
             <label for="employeeID">Employee ID</label>
             <input type="text" name="employeeID" id="employeeID" placeholder="TLR44050" required>
             <label for="email">Email Address</label>
@@ -21,7 +22,6 @@
             <input type="text" name="contactNumber" id="contactNumber" placeholder="+33 (0) 65 90 15 23" required>
             <label for="password">Password</label>
             <input type="password" name="password" id="password" placeholder="******" required>
-            {{> flash}}
             <button>Create Profile</button>
         </form>
         <span>Already have an account? <a href="/">Please Sign In</a></span>

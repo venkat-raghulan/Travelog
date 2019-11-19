@@ -46,6 +46,7 @@ router.post("/", (req, res, next) => {
         res.redirect("/");
       }
       if (bcrypt.compareSync(user.password, dbRes.password)) {
+        req.session.currentUser = dbRes;
         return res.redirect("/home");
       } else {
         return res.redirect("/");

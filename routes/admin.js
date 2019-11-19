@@ -14,7 +14,7 @@ router.get("/admin", (req, res, next) => {
           res.render("adminHome", {
             users: dbRes,
             colleges: dbRes1,
-            css: ["adminHome", "main", "reset"],
+            css: ["adminHome", "main"],
             scripts: ["adminHome"]
           });
         })

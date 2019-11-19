@@ -8,7 +8,10 @@ const tripSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "College"
   },
-  tripDates: [{ type: Date }],
+  tripDates: {
+    startDate: Date,
+    endDate: Date
+  },
   numberOfBatches: Number,
   sessionInfo: [{ name: String, timings: String }],
   trainers: [{ type: Schema.Types.ObjectId, ref: "user" }]

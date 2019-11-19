@@ -1,0 +1,34 @@
+<head>
+    <link rel="stylesheet" href="../css/userProfile.css">
+    {{!-- added stylesheet --}}
+</head>
+
+<div class="main-section">
+    <section class="welcome-section">
+        <h1>
+            Update your profile
+        </h1>
+        <p> Please provide your current details</p>
+    </section>
+    <section class="signup-section">
+        <form action="/edit-profile" method="POST" class="signup-form">
+            <label for="name">Full Name</label>
+            <input type="text" name="name" id="name" value="{{user.name}}" placeholder="{{user.name}}" disabled>
+            <label for="profilePicture">Profile Picture</label>
+            <input type="text" name="profilePicture" id="profilePicture" value="{{user.profilePicture}}"
+                placeholder="{{user.profilePicture}}" required>
+            <label for="employeeID">Employee ID</label>
+            <input type="text" name="employeeID" id="employeeID" value="{{user.employeeID}}" placeholder="TLR44050"
+                disabled>
+            <label for="email">Email Address</label>
+            <input type="email" name="email" id="email" value="{{user.email}}" placeholder="{{user.email}}" required>
+            <label for="contactNumber">Contact Number</label>
+            <input type="text" name="contactNumber" id="contactNumber" value="{{user.contactNumber}}"
+                placeholder="{{user.contactNumber}}" required>
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" placeholder="******" required>
+
+            <button>Update Profile Details</button>
+        </form>
+    </section>
+</div>

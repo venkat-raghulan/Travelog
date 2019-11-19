@@ -11,10 +11,10 @@ router.get("/planner", (req, res, next) => {
     .then(dbRes => {
       res.render("plannerHome", {
         trips: dbRes,
-        css: ["adminHome", "main", "reset"]
+        css: ["adminHome", "main"]
       });
     })
-    .catch();
+    .catch(err => console.log(err));
 });
 
 router.get("/planthetrip/:id", (req, res) => {
