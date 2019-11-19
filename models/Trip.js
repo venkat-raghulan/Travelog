@@ -8,13 +8,14 @@ const tripSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "College"
   },
-  tripDates: {
-    startDate: Date,
-    endDate: Date
-  },
+  tripDates: [
+    {
+      type: Date
+    }
+  ],
   numberOfBatches: Number,
   sessionInfo: [{ name: String, timings: String }],
-  trainers: [{ type: Schema.Types.ObjectId, ref: "user" }]
+  trainers: [{ type: Schema.Types.ObjectId, ref: "user" }],
 });
 
 const tripModel = mongoose.model("trip", tripSchema);
