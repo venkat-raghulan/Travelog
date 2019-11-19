@@ -21,11 +21,11 @@ router.get("/planthetrip/:id", (req, res) => {
   tripModel
     .findOne({ _id: req.params.id })
     .then(dbRes => {
-      console.log(dbRes);
       res.render("planSchedule", {
         trip: dbRes,
         noOfBatches: dbRes.numberOfBatches,
-        css: ["adminHome", "main", "reset"]
+        css: ["adminHome", "main", "reset"],
+        scripts: ["ajaxSchedule"]
       });
     })
     .catch(dbErr => console.log(dbErr));

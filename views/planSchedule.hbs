@@ -1,3 +1,12 @@
+<span>Finished Planning?</span> <label class="switch">
+    <input id="plan-status" type="checkbox">
+    <span class="slider round"></span>
+</label>
+<br>
+<br>
+
+
+
 <table>
     <thead>
         <tr class="table-row">
@@ -10,17 +19,19 @@
     </thead>
 
     <tbody>
-        {{#each trip.sessionInfo}}
+        {{#each trip.tripDates}}
+        {{#each ../trip.sessionInfo}}
         <tr class="table-row">
             <td class="table-division">
+
+                {{format-date ../this 'DD/MM/YY' }}<br><br>
                 {{this.name}} / {{this.timings}}
             </td>
-            {{#create-inputs "3" }}
+            {{#create-inputs ../../noOfBatches }}
             {{/create-inputs}}
         </tr>
         {{/each}}
-
-
+        {{/each}}
     </tbody>
 
 </table>
