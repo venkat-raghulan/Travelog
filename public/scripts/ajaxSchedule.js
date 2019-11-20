@@ -1,20 +1,61 @@
 const service = axios.create();
 
 const finishedPlan = document.getElementById("plan-status");
+const allTrainerInputs = document.querySelectorAll(".schedule-trainer");
+const allTopicInputs = document.querySelectorAll(".schedule-topic");
+const str = window.location.pathname;
 
-console.log(finishedPlan);
+const n = str.lastIndexOf("/");
+const result = str.substring(n + 1);
 
-console.log(service);
+allTrainerInputs.forEach(setupListener1);
+allTopicInputs.forEach(setupListener2);
 
-// function updatePlanStatus(evt) {
-//   console.log(evt);
-//   console.log(service);
-//   service
-//     .get(`/update-status?status=${evt.target.value}`)
-//     .then(apiRes => {
-//       console.log(evt.value);
-//     })
-//     .catch(apiErr => console.log(apiErr));
-// }
+function setupListener1(element) {
+  element.addEventListener("change", callback1);
+}
 
-// finishedPlan.oninput = updatePlanStatus;
+function setupListener2(element) {
+  element.addEventListener("change", callback2);
+}
+
+function callback1(evt) {
+  let batch = evt.target.getAttribute("data-batch");
+  let sessionName = evt.target.getAttribute("data-session-name");
+  let sessionTimings = evt.target.getAttribute("data-session-timings");
+  let date = evt.target.getAttribute("data-date");
+  let value = evt.target.value;
+
+  service
+    .get(
+      `/update-trainer/?batch=${batch}&sessionName=${sessionName}&sessionTimings=${sessionTimings}&date=${date}&trainer=${value}&id=${result}`
+    )
+    .then()
+    .catch();
+}
+
+function callback2(evt) {
+  let batch = evt.target.getAttribute("data-batch");
+  let sessionName = evt.target.getAttribute("data-session-name");
+  let sessionTimings = evt.target.getAttribute("data-session-timings");
+  let date = evt.target.getAttribute("data-date");
+  let value = evt.target.value;
+
+  service
+    .get(
+      `/update-topic/?batch=${batch}&sessionName=${sessionName}&sessionTimings=${sessionTimings}&date=${date}&topic=${value}&id=${result}`
+    )
+    .then()
+    .catch();
+}
+
+function updatePlanStatus(evt) {
+  service
+    .get(`/update-status/?status=${finishedPlan.checked}&id=${result}`)
+    .then(apiRes => {
+      console.log(apiRes);
+    })
+    .catch(apiErr => console.log(apiErr));
+}
+
+finishedPlan.oninput = updatePlanStatus;

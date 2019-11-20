@@ -1,31 +1,31 @@
-<div class="big-container manage-items-wrapper">
-    <table class="item-manage-table">
-        <thead>
-            <tr class="table-row">
-                <th class="table-head">Trip id</th>
-                <th class="table-head">OIF No</th>
-                <th class="table-head">College</th>
-                <th class="table-head">Dates</th>
-                <th class="table-head">No. of batches</th>
-                <th class="table-head">Trainers assigned</th>
-                <th class="table-head">Session info</th>
-                <th class="table-head">Status</th>
-                <th class="table-head">Edit</th>
-                <th class="table-head">Delete</th>
-                <th class="table-head">Plan</th>
-            </tr>
-        </thead>
-        <tbody>
-            {{#each trips}}
-            <tr class="table-row">
-                {{> dashboard_row_planner}}
-            </tr>
-            {{/each}}
-            {{#unless trips}}
-            <tr>
-                <td colspan="6">No trips yet</td>
-            </tr>
-            {{/unless}}
-        </tbody>
-    </table>
-</div>
+{{!-- <div class="big-container manage-items-wrapper"> --}}
+<table class="item-manage-table">
+    <thead>
+        <tr class="table-row">
+            <th class="table-head">Trip id</th>
+            <th class="table-head">OIF No</th>
+            <th class="table-head">College</th>
+            <th class="table-head">Dates</th>
+            <th class="table-head">No. of batches</th>
+            <th class="table-head">Trainers assigned</th>
+            <th class="table-head">Session info</th>
+            <th class="table-head">Status</th>
+            <th class="table-head">Edit</th>
+            <th class="table-head">Delete</th>
+            <th class="table-head">Plan</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each trips}}
+        <tr class="table-row">
+            {{> dashboard_row_planner}}
+        </tr>
+        {{/each}}
+        {{#unless trips}}
+        <tr>
+            <td colspan="6">No trips yet</td>
+        </tr>
+        {{/unless}}
+    </tbody>
+</table>
+{{!-- </div> --}}
