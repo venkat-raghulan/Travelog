@@ -27,19 +27,19 @@ hbs.registerHelper("create-inputs", function(
 
   for (let i = 0; i < number; i++) {
     tpl += `<td class="table-division"> 
-      <select class="schedule-input" data-batch=B${i + 1} ${dataString}>
+      <select class="schedule-trainer" data-batch=B${i + 1} ${dataString}>
       <option disabled selected value>Select Trainer</option>`;
 
     trainerlist.forEach(element => {
       var options = "";
       let name = element.name;
       let id = element.employeeID;
-      options = `<option value = "1">${id}:${name}</option>`;
+      options = `<option value = "${id}:${name}">${id}:${name}</option>`;
       tpl += options;
     });
 
     tpl += `</select>
-      <input type="text" class="schedule-input" data-batch=B${i +
+      <input type="text" class="schedule-topic" data-batch=B${i +
         1} name="topic" placeholder="Enter Topic" ${dataString}>
   </td>`;
   }

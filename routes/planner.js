@@ -41,3 +41,51 @@ router.get("/update-status", (req, res) => {
     .then(dbRes => console.log(dbRes))
     .catch(dbErr => console.log(dbErr));
 });
+
+router.get("/update-trainer", (req, res) => {
+  let trainer = req.query.trainer;
+  var employeeID = trainer.substr(0, trainer.indexOf(":"));
+  userModel
+    .findOne({ employeeID: employeeID })
+    .then(dbRes => {
+      let filter = {
+        tripID: req.query.id,
+        date: req.query.date,
+        "batchName.batch": req.query.batch,
+        "sessionName.name": req.query.sessionName
+      };
+
+      let update = {
+        trainer: dbRes._id
+      };
+
+      scheduleModel
+        .findOneAndUpdate(filter, update, {
+          new: true,
+          upsert: true // Make this update into an upsert
+        })
+        .then(dbRes => console.log(dbRes))
+        .catch(dbErr => console.log(dbErr));
+    })
+    .catch(dbErr => console.log(dbErr));
+});
+
+router.get("/update-topic", (req, res) => {
+  let filter = {
+    tripID: req.query.id,
+    date: req.query.date,
+    "batchName.batch": req.query.batch,
+    "sessionName.name": req.query.sessionName
+  };
+
+  let update = {
+    topic: req.query.topic
+  };
+  scheduleModel
+    .findOneAndUpdate(filter, update, {
+      new: true,
+      upsert: true // Make this update into an upsert
+    })
+    .then(dbRes => console.log(dbRes))
+    .catch(dbErr => console.log(dbErr));
+});
