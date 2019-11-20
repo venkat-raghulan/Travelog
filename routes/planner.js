@@ -21,14 +21,21 @@ router.get("/planner", (req, res, next) => {
 router.get("/planthetrip/:id", (req, res) => {
   tripModel
     .findOne({ _id: req.params.id })
-    .populate("trainers")
     .then(dbRes => {
-      res.render("planSchedule", {
-        trip: dbRes,
-        noOfBatches: dbRes.numberOfBatches,
-        css: ["adminHome", "main", "reset"],
-        scripts: ["ajaxSchedule"]
-      });
+      scheduleModel
+        .find({ tripID: req.params.id })
+        .populate("trainer")
+        .then(dbRes1 => {
+          console.log(dbRes1);
+          res.render("planSchedule", {
+            trip: dbRes,
+            data: dbRes1,
+            noOfBatches: dbRes.numberOfBatches,
+            css: ["adminHome", "main", "reset"],
+            scripts: ["ajaxSchedule"]
+          });
+        })
+        .catch();
     })
     .catch(dbErr => console.log(dbErr));
 });
