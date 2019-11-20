@@ -7,7 +7,7 @@
 
 .user-events {
   width: 40%;
-  border: 1px solid pink;
+  border-right: 1px solid black;
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -26,5 +26,28 @@
   box-shadow: 1px 1px grey;
   margin: 10px 0;
   padding: 10px;
-  overflow: hidden;
+  text-align: center;
+}
+
+.card-info {
+  display: flex;
+  flex-direction: row;
+  font-size: 16px;
+  justify-content: space-between;
+  line-height: 20px;
+  width: 87%;
+  border: 1px solid grey;
+  border-radius: 7px;
+  box-shadow: 1px 1px grey;
+  margin: 10px 0;
+  padding: 10px;
+}
+
+#see-more {
+  border: none;
+  background: none;
+}
+
+.bold {
+  font-weight: 500;
 }

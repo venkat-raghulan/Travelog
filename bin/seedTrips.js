@@ -6,10 +6,7 @@ const tripSample = [
     tripID: 10001,
     oifID: 2103,
     college: "5dd278b9407a7a439bde60cf",
-    tripDates: {
-      startDate: mydate1,
-      endDate: mydate2
-    },
+    tripDates: [mydate1, mydate2],
     numberOfBatches: 7,
     sessionInfo: [
       { name: "s1", timings: "9-11.30am" },
@@ -21,10 +18,7 @@ const tripSample = [
     tripID: 10002,
     oifID: 2104,
     college: "5dd278b9407a7a439bde60cf",
-    tripDates: {
-      startDate: mydate1,
-      endDate: mydate2
-    },
+    tripDates: [mydate1, mydate2],
     numberOfBatches: 6,
     sessionInfo: [
       { name: "s1", timings: "9-11.30am" },
@@ -36,10 +30,7 @@ const tripSample = [
     tripID: 10003,
     oifID: 2105,
     college: "5dd278b9407a7a439bde60cf",
-    tripDates: {
-      startDate: mydate1,
-      endDate: mydate2
-    },
+    tripDates: [mydate1, mydate2],
     numberOfBatches: 3,
     sessionInfo: [
       { name: "s1", timings: "9-11.30am" },

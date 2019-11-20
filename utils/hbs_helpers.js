@@ -24,3 +24,13 @@ hbs.registerHelper("create-inputs", function(number) {
   }
   return tpl;
 });
+
+hbs.registerHelper("list-dates", function(dates) {
+  const dateArray = [];
+  dates.forEach(date => {
+    let rule = "DD-MM-YYYY";
+    dateArray.push(moment(date).format(rule));
+  });
+
+  return `<li><span class="bold">Start Date: </span> ${dateArray[0]}</li><li><span class="bold"> End Date: </span> ${dateArray[1]}</li>`;
+});

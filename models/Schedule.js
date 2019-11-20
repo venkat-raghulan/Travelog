@@ -14,6 +14,6 @@ const scheduleSchema = new Schema({
   }
 });
 
-const collegeModel = mongoose.model("College", collegeSchema);
+const scheduleModel = mongoose.model("Schedule", scheduleSchema);
 
-module.exports = collegeModel;
+module.exports = scheduleModel;

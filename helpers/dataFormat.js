@@ -3,7 +3,7 @@ let dateHelper = function(dbData) {
     college: dbData.forEach(trip => trip.college)
   };
   //   console.log(dbData);
-  console.log(data.college);
+  // console.log(data.college);
   return data;
 };
 
