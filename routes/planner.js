@@ -21,12 +21,11 @@ router.get("/planner", (req, res, next) => {
 router.get("/planthetrip/:id", (req, res) => {
   tripModel
     .findOne({ _id: req.params.id })
+    .populate("trainers")
     .then(dbRes => {
       scheduleModel
         .find({ tripID: req.params.id })
-        .populate("trainer")
         .then(dbRes1 => {
-          console.log(dbRes1);
           res.render("planSchedule", {
             trip: dbRes,
             data: dbRes1,
@@ -41,16 +40,15 @@ router.get("/planthetrip/:id", (req, res) => {
 });
 
 router.get("/update-status", (req, res) => {
-  console.log(req.query);
-
   tripModel
     .findByIdAndUpdate(req.query.id, { scheduleStatus: req.query.status })
-    .then(dbRes => console.log(dbRes))
+    .then()
     .catch(dbErr => console.log(dbErr));
 });
 
 router.get("/update-trainer", (req, res) => {
   let trainer = req.query.trainer;
+  console.log(req.query);
   var employeeID = trainer.substr(0, trainer.indexOf(":"));
   userModel
     .findOne({ employeeID: employeeID })
@@ -59,7 +57,8 @@ router.get("/update-trainer", (req, res) => {
         tripID: req.query.id,
         date: req.query.date,
         "batchName.batch": req.query.batch,
-        "sessionName.name": req.query.sessionName
+        "sessionName.name": req.query.sessionName,
+        "sessionName.timings": req.query.sessionTimings
       };
 
       let update = {
@@ -71,7 +70,7 @@ router.get("/update-trainer", (req, res) => {
           new: true,
           upsert: true // Make this update into an upsert
         })
-        .then(dbRes => console.log(dbRes))
+        .then()
         .catch(dbErr => console.log(dbErr));
     })
     .catch(dbErr => console.log(dbErr));
@@ -82,7 +81,8 @@ router.get("/update-topic", (req, res) => {
     tripID: req.query.id,
     date: req.query.date,
     "batchName.batch": req.query.batch,
-    "sessionName.name": req.query.sessionName
+    "sessionName.name": req.query.sessionName,
+    "sessionName.timings": req.query.sessionTimings
   };
 
   let update = {
@@ -93,6 +93,6 @@ router.get("/update-topic", (req, res) => {
       new: true,
       upsert: true // Make this update into an upsert
     })
-    .then(dbRes => console.log(dbRes))
+    .then()
     .catch(dbErr => console.log(dbErr));
 });

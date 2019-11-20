@@ -21,13 +21,20 @@
 
     <tbody>
         {{#each trip.tripDates}}
+
+        {{!-- for each date in the trip --}}
         {{#each ../trip.sessionInfo}}
+
+
+        {{!-- for each session in the trip --}}
         <tr class="table-row">
+            {{!-- create a row --}}
             <td class="table-division">
                 {{format-date ../this 'DD/MM/YY' }}<br><br>
                 {{this.name}} / {{this.timings}}
             </td>
-            {{#create-inputs ../../noOfBatches ../../trip.trainers this ../this}}
+            {{!-- create the inputs for the specific row --}}
+            {{#create-inputs ../../noOfBatches ../../trip.trainers this ../this ../../data}}
             {{/create-inputs}}
         </tr>
         {{/each}}

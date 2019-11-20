@@ -18,29 +18,47 @@ hbs.registerHelper("create-inputs", function(
   number,
   trainerlist,
   session,
-  date
+  date,
+  data
 ) {
   let formattedDate = moment(date).format("YYYY-MM-DD");
   let dataString = `data-session-name = ${session.name} data-session-timings = ${session.timings} data-date =${formattedDate}`;
 
-  let tpl = "";
+  let filteredData = data.filter(
+    obj =>
+      obj.sessionName.name == session.name &&
+      obj.date.setHours(0, 0, 0, 0) == date.setHours(0, 0, 0, 0)
+  );
 
+  let tpl = "";
+  //iterates through the batches to create inputs
   for (let i = 0; i < number; i++) {
+    let topic = filteredData
+      .filter(a => a.batchName.batch == "B" + (i + 1))
+      .reduce((acc, val) => acc + val.topic, "");
+
+    let trainer = filteredData
+      .filter(a => a.batchName.batch == "B" + (i + 1))
+      .reduce((acc, val) => acc + val.trainer, "");
+
+    console.log(topic);
+    console.log(trainer);
+
     tpl += `<td class="table-division"> 
       <select class="schedule-trainer" data-batch=B${i + 1} ${dataString}>
       <option disabled selected value>Select Trainer</option>`;
-
-    trainerlist.forEach(element => {
+    // Iterates through the trainer list to create options in the dropdown
+    trainerlist.forEach((element, index) => {
       var options = "";
       let name = element.name;
       let id = element.employeeID;
       options = `<option value = "${id}:${name}">${id}:${name}</option>`;
       tpl += options;
     });
-
+    // Create input for entering topic
     tpl += `</select>
       <input type="text" class="schedule-topic" data-batch=B${i +
-        1} name="topic" placeholder="Enter Topic" ${dataString}>
+        1} name="topic" placeholder="Enter Topic" ${dataString} value=${topic}>
   </td>`;
   }
   return tpl;
