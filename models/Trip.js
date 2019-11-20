@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const tripSchema = new Schema({
-  tripID: String,
   oifID: String,
   college: {
     type: Schema.Types.ObjectId,

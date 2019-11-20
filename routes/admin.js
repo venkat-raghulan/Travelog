@@ -12,9 +12,10 @@ router.get("/admin", (req, res, next) => {
         .find()
         .then(dbRes => {
           res.render("adminHome", {
+            user: req.session.currentUser,
             users: dbRes,
             colleges: dbRes1,
-            css: ["adminHome", "main"],
+            css: ["adminHome", "main", "userHome"],
             scripts: ["adminHome"]
           });
         })

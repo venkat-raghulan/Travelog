@@ -1,33 +1,43 @@
 <td class="table-division">
-    <div>{{this.tripID}}</div>
-</td>
-<td class="table-division">
     <div>{{this.oifID}}</div>
 </td>
 <td class="table-division">
-    <div>{{this.college}}</div>
+    <div>{{this.college.collegeName}}</div>
 </td>
 <td class="table-division">
-    <div>{{this.tripDates}}</div>
+    {{#each this.tripDates}}
+    <div>{{format-date this 'DD/MM/YY' }}</div>
+    {{/each}}
+</td>
+<td class="table-division">
+    {{#each this.sessionInfo}}
+    <div>{{this.name}} : {{this.timings}}</div>
+    <br>
+    {{/each}}
 </td>
 <td class="table-division">
     <div>{{this.numberOfBatches}}</div>
 </td>
+
 <td class="table-division">
-    <div>{{this.trainers}}</div>
+    {{#each this.trainers}}
+    <div>{{this.name}}</div>
+    {{/each}}
 </td>
 <td class="table-division">
-    <div>{{this.sessionInfo}}</div>
+    {{#unless this.scheduleStatus}}
+    <div>Unplanned</div>
+    {{/unless}}
+    {{#if this.scheduleStatus}}
+    <div>Planned</div>
+    {{/if}}
 </td>
 <td class="table-division">
-    <div>Status</div>
-</td>
-<td class="table-division">
-    <a href="" class="fa fa-edit table-icon"></a>
+    <a href="/edit-trip" class="fa fa-edit table-icon"></a>
 </td>
 <td class="table-division">
     <a href="" class="fa fa-trash table-icon"></a>
 </td>
 <td class="table-division">
-    <a href="/planthetrip/{{this._id}}" class="fa fa-clipboard-list table-icon">Plan</a>
+    <a href="/planthetrip/{{this._id}}" class="fa fa-clipboard-list table-icon"></a>
 </td>

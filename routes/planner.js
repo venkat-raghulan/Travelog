@@ -4,18 +4,35 @@ const userModel = require("./../models/User.js");
 const collegeModel = require("./../models/College");
 const tripModel = require("./../models/Trip");
 const scheduleModel = require("./../models/Schedule");
+
+// console.log(user);
 module.exports = router;
 
 router.get("/planner", (req, res, next) => {
   tripModel
     .find()
+    .populate("college")
+    .populate("trainers")
     .then(dbRes => {
+      console.log(dbRes);
       res.render("plannerHome", {
+        user: req.session.currentUser,
         trips: dbRes,
         css: ["adminHome", "main"]
       });
     })
     .catch(err => console.log(err));
+});
+
+router.post("/create-trip", (req, res, next) => {
+  console.log(req.query);
+});
+
+router.get("/create-trip", (req, res, next) => {
+  res.render("../views/forms/trip-create.hbs", {
+    user: req.session.currentUser,
+    css: ["userProfile"]
+  });
 });
 
 router.get("/planthetrip/:id", (req, res) => {
@@ -27,6 +44,7 @@ router.get("/planthetrip/:id", (req, res) => {
         .find({ tripID: req.params.id })
         .then(dbRes1 => {
           res.render("planSchedule", {
+            user: req.session.currentUser,
             trip: dbRes,
             data: dbRes1,
             noOfBatches: dbRes.numberOfBatches,
@@ -48,7 +66,6 @@ router.get("/update-status", (req, res) => {
 
 router.get("/update-trainer", (req, res) => {
   let trainer = req.query.trainer;
-  console.log(req.query);
   var employeeID = trainer.substr(0, trainer.indexOf(":"));
   userModel
     .findOne({ employeeID: employeeID })

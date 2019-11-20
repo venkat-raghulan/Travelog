@@ -41,8 +41,8 @@ hbs.registerHelper("create-inputs", function(
       .filter(a => a.batchName.batch == "B" + (i + 1))
       .reduce((acc, val) => acc + val.trainer, "");
 
-    console.log(topic);
-    console.log(trainer);
+    // console.log(topic);
+    // console.log(trainer);
 
     tpl += `<td class="table-division"> 
       <select class="schedule-trainer" data-batch=B${i + 1} ${dataString}>
@@ -52,7 +52,12 @@ hbs.registerHelper("create-inputs", function(
       var options = "";
       let name = element.name;
       let id = element.employeeID;
-      options = `<option value = "${id}:${name}">${id}:${name}</option>`;
+      if (element._id == trainer) {
+        options = `<option selected value = "${id}:${name}">${id}:${name}</option>`;
+      } else {
+        options = `<option value = "${id}:${name}">${id}:${name}</option>`;
+      }
+
       tpl += options;
     });
     // Create input for entering topic
