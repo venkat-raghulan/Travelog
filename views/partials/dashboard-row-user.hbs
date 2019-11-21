@@ -11,7 +11,9 @@
     <div>{{this.contactNumber}}</div>
 </td>
 <td class="table-division">
-    <div>{{this.userType}}</div>
+    {{#each this.userType}}
+    <div>{{this}}</div>
+    {{/each}}
 </td>
 <td class="table-division">
     <a href="" class="fa fa-edit table-icon"></a>

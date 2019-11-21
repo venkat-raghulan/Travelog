@@ -35,6 +35,9 @@
             {{/unless}}
         </tbody>
     </table>
+    <br>
+    <form action="/create-user">
+        <button type="submit">Create User</button></form>
 </div>
 
 <div id="Colleges" class="tabcontent">
@@ -45,7 +48,7 @@
                 <th class="table-head">College Name</th>
                 <th class="table-head">College Address</th>
                 <th class="table-head">City</th>
-                <th class="table-head">BDM</th>
+                {{!-- <th class="table-head">BDM</th> --}}
                 <th class="table-head">College SPOC Name</th>
                 <th class="table-head">College SPOC phone</th>
                 <th class="table-head">Edit</th>
@@ -65,4 +68,7 @@
             {{/unless}}
         </tbody>
     </table>
+    <br>
+    <form action="/create-college">
+        <button type="submit">Create College</button></form>
 </div>

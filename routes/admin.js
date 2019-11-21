@@ -23,3 +23,17 @@ router.get("/admin", (req, res, next) => {
     })
     .catch(dbErr1 => console.log(dbErr1));
 });
+
+router.get("/create-college", (req, res, next) => {
+  userModel
+    .find({ userType: "BDM" })
+    .then(dbRes => {
+      console.log(dbRes);
+      res.render("../views/forms/college-create.hbs", {
+        user: req.session.currentUser,
+        bdmList: dbRes,
+        css: ["userProfile"]
+      });
+    })
+    .catch(dbErr => console.log(dbErr));
+});

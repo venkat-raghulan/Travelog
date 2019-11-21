@@ -1,0 +1,35 @@
+{{> navbar}}
+
+<div class="main-section">
+    <section class="welcome-section">
+        <p>
+            Please fill in the details below to create a new college.
+        </p>
+    </section>
+    <section class="signup-section">
+        <form action="/create-college" method="POST" class="signup-form">
+            <label for="collegeID">College ID</label>
+            <input type="text" name="collegeID" placeholder="XX12X">
+            <label for="collegeName">Name</label>
+            <input type="text" name="collegeName" placeholder="Stanford University">
+            <label for="collegeAddress">Address</label>
+            <input type="text" name="collegeAddress" placeholder="226, Boulevard Voltaire">
+            <label for="city">City</label>
+            <input type="text" name="city" placeholder="Paris">
+            <label for="collegeSPOC">Enter College SPOC details</label>
+            <input type="text" name="spocName" placeholder="Mr. John Doe">
+            <input type="text" name="spocPhone" placeholder="+33 435 789 3245">
+            <label for="BDM">Choose the Business Development Manager</label>
+            <br>
+            <select>
+                <option disabled selected value> choose BDM </option>
+                {{#each bdmList}}
+                <option>{{this.name}}</option>
+                {{/each}}
+            </select>
+
+            <button type="submit">Create Trip</button>
+        </form>
+        <span>To go back to admin dashboard, <a href="/admin">click here</a></span>
+    </section>
+</div>
