@@ -1,10 +1,10 @@
-{{> navbar}}
+{{> navbar this}}
 
 <div class="main-container">
     <div class="user-events">
         <h2 class="assignment-title">Upcoming Assignments</h2>
         {{#each futureTrips}}
-        <div class="card-info">
+        <div class="card-info hidden">
             <ul>
                 <li><span class="bold">City:</span> {{this.college.city}} </li>
                 <li><span class="bold">College Name:</span> {{this.college.collegeName}} </li>
@@ -12,14 +12,14 @@
             <ul class="list-sorting">
                 {{{list-dates this.tripDates}}}
             </ul>
-            <button id="see-more">View More</button>
+            <button class="see-more" data-id="{{this._id}}">View More</button>
         </div>
         {{/each}}
         <div>
         </div>
         <h2 class="assignment-title">Current Assignment</h2>
         {{#each currentTrip}}
-        <div class="card-info">
+        <div class="card-info hidden">
             <ul>
                 <li><span class="bold">City:</span> {{this.college.city}} </li>
                 <li><span class="bold">College Name:</span> {{this.college.collegeName}} </li>
@@ -27,12 +27,12 @@
             <ul class="list-sorting">
                 {{{list-dates this.tripDates}}}
             </ul>
-            <button id="see-more">View More</button>
+            <button class="see-more" data-id="{{this._id}}">View More</button>
         </div>
         {{/each}}
-        <h2 class="assignment-title">Previous Assignments</h2>
+        <h2 class=" assignment-title">Previous Assignments</h2>
         {{#each previousTrip}}
-        <div class="card-info">
+        <div class="card-info hidden">
             <ul>
                 <li><span class="bold">City:</span> {{this.college.city}} </li>
                 <li><span class="bold">College Name:</span> {{this.college.collegeName}} </li>
@@ -40,9 +40,8 @@
             <ul class="list-sorting">
                 {{{list-dates this.tripDates}}}
             </ul>
-            <button id="see-more">View More</button>
+            <button class="see-more" data-id="{{this._id}}">View More</button>
         </div>
         {{/each}}
     </div>
-    <div class="user-event-more"></div>
 </div>

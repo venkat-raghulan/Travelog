@@ -7,7 +7,7 @@
 
 .user-events {
   width: 40%;
-  border-right: 1px solid black;
+  border-right: 1.5px solid grey;
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -26,7 +26,7 @@
   box-shadow: 1px 1px grey;
   margin: 10px 0;
   padding: 10px;
-  text-align: center;
+  /* text-align: center; */
 }
 
 .card-info {
@@ -43,11 +43,64 @@
   padding: 10px;
 }
 
-#see-more {
+.see-more {
   border: none;
   background: none;
 }
 
 .bold {
   font-weight: 500;
+}
+
+/* More Information Section */
+
+.more-information {
+  display: flex;
+  width: 60%;
+  flex-direction: column;
+  max-width: 60%;
+}
+.college-information {
+  width: 100%;
+  display: flex;
+  border-bottom: 1.5px solid grey;
+  padding: 10px;
+}
+.college-information h2 {
+  font-size: 30px;
+  font-weight: 500;
+  margin-bottom: 5px;
+  width: 40%;
+  padding-left: 25px;
+  align-self: center;
+}
+
+.college-information ul {
+  font-size: 18px;
+  width: 60%;
+  line-height: 25px;
+  padding-left: 30px;
+}
+.college-information span,
+.schedule-data span {
+  font-weight: 500;
+}
+
+.schedule-holder {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: baseline;
+  padding: 20px;
+}
+
+.schedule-data {
+  width: 28%;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid grey;
+  box-shadow: 1px 1px grey;
+}
+.schedule-data ul {
+  line-height: 22px;
+  font-size: 16px;
 }
