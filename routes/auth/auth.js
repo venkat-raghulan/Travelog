@@ -17,12 +17,11 @@ router.post("/signup", (req, res, next) => {
 
       const passwordsStrength = zxcPassword(user.password);
 
-      if (passwordsStrength.score <= 2) {
-        req.flash("error", "Please enter a better password");
-        res.redirect("/signup");
-      }
+      // if (passwordsStrength.score <= ) {
+      //   req.flash("error", "Please enter a better password");
+      //   res.redirect("/signup");
+      // }
 
-      // Working on Password Strength on signing up - cannot get flash to work.
       const salt = bcrypt.genSaltSync(10);
       const hashed = bcrypt.hashSync(user.password, salt);
       user.password = hashed;
