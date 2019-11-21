@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>TraveLog</title>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script type="module" src="/scripts/api.js"></script>
     {{#each css}}
     <link rel="stylesheet" href="/css/{{this}}.css">
     {{/each}}
@@ -18,10 +20,6 @@
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
 
 </head>
-{{!-- Venkat - On loading, we will have a log in page.
-  The page will look similar to the Ironhack login (Just a center aligned log in form).
-  Upon logging in the nav-bar partial will be displayed with different options depending on the user type e.g. Admin, User,  Manager
- --}}
 
 <body>
 

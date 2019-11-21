@@ -9,7 +9,6 @@ const scheduleModel = require("../models/Schedule");
 const moment = require("moment");
 
 router.get("/home", async (req, res, next) => {
-  console.log("here");
   const user = req.session.currentUser;
   try {
     const previousDay = new Date();
@@ -18,7 +17,7 @@ router.get("/home", async (req, res, next) => {
     const nextDay = new Date();
     nextDay.setDate(nextDay.getDate() + 1);
     nextDay.setHours(1, 0, 0, 0);
-    const dbRes = await userModel.findOne({ email: user.email });
+    const dbRes = await userModel.findOne({ email: "andybrown098@live.co.uk" });
     const trainerFutureTrips = await tripModel
       .find({ trainers: dbRes._id, "tripDates.0": { $gt: nextDay } })
       .populate("college");
@@ -40,9 +39,6 @@ router.get("/home", async (req, res, next) => {
         "tripDates.0": { $lt: previousDay }
       })
       .populate("college");
-    console.log(previousDay);
-    console.log("-----------------------");
-    console.log(nextDay);
 
     res.render("userHome", {
       user: dbRes,
@@ -50,33 +46,12 @@ router.get("/home", async (req, res, next) => {
       schedule: tripSchedules,
       currentTrip: currentTrips,
       previousTrip: previousTrips,
-      css: ["userHome"]
+      css: ["userHome"],
+      scripts: ["userHome"]
     });
   } catch (err) {
     console.log(err);
   }
-  // userModel.findOne({ email: "andybrown098@live.co.uk" }).then(dbRes => {
-  // tripModel
-  //   .find({ trainers: dbRes._id, "tripDates.0": { $gt: new Date() } }) //Need to add further search parameters to find all the dates
-  //   .populate("college")
-  //   .then(tripDbRes => [...tripDbRes.map(trip => trip._id)])
-  //   .then(tripId => scheduleModel.find({ tripID: tripId }))
-  //   .then(filteredSchedules => {
-  //     const previous = new Date();
-  //     previous.setDate(previous.getDate() - 1);
-  //     const nextDay = new Date();
-  //     nextDay.setDate(nextDay.getDate() + 1);
-  //     return tripModel.find({
-  //       trainers: dbRes._id,
-  //       $and: [
-  //         { tripDates: { $lt: nextDay } },
-  //         { tripDates: { $gt: previous } }
-  //       ]
-  //     });
-  //   })
-  //   .then(tripDatesFiltered => console.log(tripDatesFiltered))
-  //   .catch(err => console.log(err));
-  // });
 });
 
 router.get("/edit-profile/:id", userProtect, (req, res, next) => {
@@ -108,6 +83,27 @@ router.post("/edit-profile", userProtect, (req, res, next) => {
     .findByIdAndUpdate(id, body)
     .then(dbRes => {
       res.redirect("/home");
+    })
+    .catch(err => console.log(err));
+});
+
+router.get("/home/:id", (req, res, next) => {
+  const tripId = req.params.id;
+  tripModel
+    .findById(tripId)
+    .populate("college")
+    .populate("trainers")
+    .then(dbRes => {
+      scheduleModel
+        .find({ tripID: dbRes._id, trainer: "5dd2e630637df3131c88683d" }) //req.session.currentUser._id
+        .then(schRes => {
+          const tripData = {
+            trip: dbRes,
+            schedule: schRes
+          };
+          res.send(tripData);
+        })
+        .catch(schErr => console.log(schErr));
     })
     .catch(err => console.log(err));
 });
