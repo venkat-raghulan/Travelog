@@ -7,6 +7,7 @@ const bcrypt = require("bcrypt");
 const dataHelper = require("../helpers/dataFormat");
 const scheduleModel = require("../models/Schedule");
 const moment = require("moment");
+const uploadCloud = require("./../config/cloudinary");
 
 router.get("/home", async (req, res, next) => {
   const user = req.session.currentUser;
@@ -69,27 +70,32 @@ router.get("/edit-profile/:id", userProtect, (req, res, next) => {
     .catch(dbErr => console.log(dbErr));
 });
 
-router.post("/edit-profile", userProtect, (req, res, next) => {
-  const id = req.session.currentUser;
-  const body = {
-    profilePicture: req.body.profilePicture,
-    email: req.body.email,
-    contactNumber: req.body.contactNumber,
-    password: req.body.password
-  };
+router.post(
+  "/edit-profile",
+  userProtect,
+  uploadCloud.single("image"),
+  (req, res, next) => {
+    const id = req.session.currentUser;
+    const body = {
+      profilePicture: req.body.profilePicture,
+      email: req.body.email,
+      contactNumber: req.body.contactNumber,
+      password: req.body.password
+    };
 
-  const salt = bcrypt.genSaltSync(10);
-  const hashed = bcrypt.hashSync(req.body.password, salt);
+    const salt = bcrypt.genSaltSync(10);
+    const hashed = bcrypt.hashSync(req.body.password, salt);
 
-  body.password = hashed;
+    body.password = hashed;
 
-  userModel
-    .findByIdAndUpdate(id, body)
-    .then(dbRes => {
-      res.redirect("/home");
-    })
-    .catch(err => console.log(err));
-});
+    userModel
+      .findByIdAndUpdate(id, body)
+      .then(dbRes => {
+        res.redirect("/home");
+      })
+      .catch(err => console.log(err));
+  }
+);
 
 router.get("/home/:id", (req, res, next) => {
   const tripId = req.params.id;

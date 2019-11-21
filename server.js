@@ -7,14 +7,12 @@ const path = require("path");
 const hbs = require("hbs");
 const session = require("express-session");
 const flash = require("connect-flash");
-const cookieParser = require("cookie-parser");
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use(cookieParser("secret"));
 app.use(
   session({
     secret: "secret",
@@ -29,7 +27,7 @@ app.use(
 app.use(flash());
 
 app.use(function(req, res, next) {
-  res.locals.sessionFlash = req.session.sessionFlash;
+  res.locals.sessionFlash = req.flash("error");
   next();
 });
 

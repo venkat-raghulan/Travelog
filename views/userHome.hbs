@@ -3,6 +3,9 @@
 <div class="main-container">
     <div class="user-events">
         <h2 class="assignment-title">Upcoming Assignments</h2>
+        {{#unless futureTrips}}
+        <div>There are no trips</div>
+        {{/unless}}
         {{#each futureTrips}}
         <div class="card-info hidden">
             <ul>
