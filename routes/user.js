@@ -10,6 +10,10 @@ const moment = require("moment");
 
 router.get("/home", async (req, res, next) => {
   const user = req.session.currentUser;
+  if (user === undefined) {
+    res.redirect("/");
+    return;
+  }
   try {
     const previousDay = new Date();
     previousDay.setDate(previousDay.getDate());
@@ -17,7 +21,7 @@ router.get("/home", async (req, res, next) => {
     const nextDay = new Date();
     nextDay.setDate(nextDay.getDate() + 1);
     nextDay.setHours(1, 0, 0, 0);
-    const dbRes = await userModel.findOne({ email: "andybrown098@live.co.uk" });
+    const dbRes = await userModel.findOne({ email: user.email });
     const trainerFutureTrips = await tripModel
       .find({ trainers: dbRes._id, "tripDates.0": { $gt: nextDay } })
       .populate("college");
