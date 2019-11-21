@@ -3,8 +3,9 @@
 </head>
 
 <div class="nav-bar">
-    <a href="/home">DashBoard</a>
+    <a href="/home">Dashboard</a>
     <div class="edit-nav">
+        <a href="/profile-picture/{{user._id}}" id="create-profile-pic">New Profile Pircture</a>
         <a href="/edit-profile/{{user._id}}"><img src=" {{user.profilePicture}} " alt="User Picture"></a>
         <a href="/logout">LogOut</a>
     </div>

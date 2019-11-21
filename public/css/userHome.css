@@ -23,7 +23,7 @@
   font-size: 30px;
   border: 1px solid grey;
   border-radius: 7px;
-  box-shadow: 1px 1px grey;
+  /* box-shadow: 1px 1px grey; */
   margin: 10px 0;
   padding: 10px;
   /* text-align: center; */
@@ -35,7 +35,7 @@
   font-size: 16px;
   justify-content: space-between;
   line-height: 20px;
-  width: 87%;
+  width: 90%;
   border: 1px solid grey;
   border-radius: 7px;
   box-shadow: 1px 1px grey;

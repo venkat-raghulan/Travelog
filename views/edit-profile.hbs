@@ -2,7 +2,7 @@
     <link rel="stylesheet" href="../css/userProfile.css">
     {{!-- added stylesheet --}}
 </head>
-
+{{> navbar}}
 <div class="main-section">
     <section class="welcome-section">
         <h1>
@@ -14,9 +14,6 @@
         <form action="/edit-profile" method="POST" class="signup-form">
             <label for="name">Full Name</label>
             <input type="text" name="name" id="name" value="{{user.name}}" placeholder="{{user.name}}" disabled>
-            <label for="profilePicture">Profile Picture</label>
-            <input type="text" name="profilePicture" id="profilePicture" value="{{user.profilePicture}}"
-                placeholder="{{user.profilePicture}}" required>
             <label for="employeeID">Employee ID</label>
             <input type="text" name="employeeID" id="employeeID" value="{{user.employeeID}}" placeholder="TLR44050"
                 disabled>

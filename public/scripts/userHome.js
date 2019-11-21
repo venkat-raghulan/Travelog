@@ -51,10 +51,9 @@ const viewMore = function(evt) {
   if (viewMore) viewMore.remove();
   divNode.className = "more-information";
   service
-    .get(`http://localhost:5050/home/${assignmentId}`)
+    .get(`https://localhost:5050/home/${assignmentId}`)
     .then(res => {
       const travelData = res.data;
-      // divider.innerHTML = "";
       divider.appendChild(divNode);
       divNode.innerHTML = formatData(travelData);
       console.log(travelData);

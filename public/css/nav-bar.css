@@ -32,3 +32,8 @@
   justify-content: flex-end;
   align-items: center;
 }
+
+#create-profile-pic {
+  font-size: 14px;
+  margin-right: 10px;
+}
