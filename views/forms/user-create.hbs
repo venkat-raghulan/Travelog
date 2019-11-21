@@ -1,0 +1,32 @@
+{{> navbar}}
+
+<div class="main-section">
+    <section class="welcome-section">
+        <p>
+            Please fill in the details below to create a new user.
+        </p>
+    </section>
+    <section class="signup-section">
+        <form action="/create-user" method="POST" class="signup-form">
+            <label for="name">Full Name</label>
+            <input type="text" name="name" id="name" value="" placeholder="John Doe">
+            <label for="employeeID">Employee ID</label>
+            <input type="text" name="employeeID" id="employeeID" value="" placeholder="TLR44050">
+            <label for="email">Email Address</label>
+            <input type="email" name="email" id="email" value="" placeholder="ironman@avengers.com">
+            <label for="contactNumber">Contact Number</label>
+            <input type="text" name="contactNumber" id="contactNumber" value="" placeholder="+33 568 8984 9234">
+            <label for="password">Default Password</label>
+            <input type="password" name="password" id="password" placeholder="******">
+            <label for="userType">Select User Type (You can select multiple values)</label>
+            <select multiple>
+                <option value="Admin">Admin</option>
+                <option value="Planner">Planner</option>
+                <option value="BDM">BDM</option>
+                <option value="Trainer">Trainer</option>
+            </select>
+            <button>Create User</button>
+        </form>
+        <span>To go back to admin dashboard, <a href="/admin">click here</a></span>
+    </section>
+</div>
