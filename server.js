@@ -10,7 +10,6 @@ const flash = require("connect-flash");
 const app = express();
 const https = require("https");
 const fs = require("fs");
-const enforce = require("express-sslify");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
