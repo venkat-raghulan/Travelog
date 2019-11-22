@@ -210,3 +210,20 @@ router.get("/populate-trainer-box", (req, res, next) => {
     .then(dbRes => res.send(dbRes))
     .catch(dbErr => console.log(dbErr));
 });
+
+router.get("/assign-trainer/:id", (req, res, next) => {
+  console.log(req.params.id);
+  tripModel
+    .findOneAndUpdate(
+      { _id: req.query.id, trainers: { $nin: [req.params.id] } },
+      { $push: { trainers: req.params.id } }
+    )
+    .populate("trainer")
+    .then(
+      userModel
+        .findById(req.params.id)
+        .then(dbRes => res.send(dbRes))
+        .catch(dbErr => console.log(dbErr))
+    )
+    .catch(dbErr => console.log(dbErr));
+});

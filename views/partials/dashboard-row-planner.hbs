@@ -18,15 +18,15 @@
 <td class="table-division">
     <div>{{this.numberOfBatches}}</div>
 </td>
-
 <td class="table-division">
-    {{#unless this.trainers}}
-    No trainers assigned yet.
-
-    {{/unless}}
     {{#each this.trainers}}
     <div>{{this.name}}</div>
     {{/each}}
+    {{#unless this.trainers}}
+    No trainers assigned yet.
+    {{/unless}}
+    <br>
+    <br>
     <a href="" id="addTrainer~{{this._id}}" class="fa fa-user-plus table-icon addTrainerButton"></a>
 </td>
 <td class="table-division">
