@@ -104,7 +104,7 @@ router.get("/home/:id", (req, res, next) => {
     .populate("trainers")
     .then(dbRes => {
       scheduleModel
-        .find({ tripID: dbRes._id, trainer: "5dd2e630637df3131c88683d" }) //req.session.currentUser._id
+        .find({ tripID: dbRes._id, trainer: req.session.currentUser._id }) //req.session.currentUser._id
         .then(schRes => {
           const tripData = {
             trip: dbRes,
@@ -130,7 +130,6 @@ router.post(
   uploadCloud.single("webcam"),
   (req, res, next) => {
     // const id = req.params.id;
-    console.log("heeere", req.session.currentUser, req.file.url);
     const pic = { profilePicture: req.file.url };
     userModel
       .findByIdAndUpdate(req.session.currentUser._id, pic)
