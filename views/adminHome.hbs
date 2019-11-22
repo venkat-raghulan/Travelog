@@ -18,13 +18,13 @@
                 <th class="table-head">email</th>
                 <th class="table-head">contact</th>
                 <th class="table-head">Roles</th>
-                <th class="table-head">Edit</th>
-                <th class="table-head">Delete</th>
+                <th class="table-head editButton">Edit</th>
+                <th class="table-head deleteButton">Delete</th>
             </tr>
         </thead>
         <tbody>
             {{#each users}}
-            <tr class="table-row">
+            <tr class="table-row" id="row{{this._id}}">
                 {{> dashboard_row_user}}
             </tr>
             {{/each}}
@@ -57,7 +57,7 @@
         </thead>
         <tbody>
             {{#each colleges}}
-            <tr class="table-row">
+            <tr class="table-row" id="row{{this._id}}">
                 {{> dashboard_row_college}}
             </tr>
             {{/each}}

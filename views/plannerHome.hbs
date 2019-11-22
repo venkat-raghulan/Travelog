@@ -20,7 +20,7 @@
         </thead>
         <tbody>
             {{#each trips}}
-            <tr class="table-row">
+            <tr class="table-row" id="row{{this._id}}">
                 {{> dashboard_row_planner}}
             </tr>
             {{/each}}

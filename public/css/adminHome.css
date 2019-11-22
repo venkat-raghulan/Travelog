@@ -84,9 +84,14 @@
     font-weight: 600;
 }
 
+.table-icon {
+    color: black;
+    text-decoration: none;
+}
+
 .table-icon:hover {
     cursor: pointer;
-    color: rgb(52, 52, 255);
+    color: #F05136
 }
 
 .table-image {
@@ -134,11 +139,11 @@
 }
 
 input:checked+.slider {
-    background-color: #2196F3;
+    background-color: #F05136;
 }
 
 input:focus+.slider {
-    box-shadow: 0 0 1px #2196F3;
+    box-shadow: 0 0 1px #F05136;
 }
 
 input:checked+.slider:before {

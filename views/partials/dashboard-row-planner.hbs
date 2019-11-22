@@ -20,9 +20,14 @@
 </td>
 
 <td class="table-division">
+    {{#unless this.trainers}}
+    No trainers assigned yet.
+
+    {{/unless}}
     {{#each this.trainers}}
     <div>{{this.name}}</div>
     {{/each}}
+    <a href="" id="addTrainer~{{this._id}}" class="fa fa-user-plus table-icon addTrainerButton"></a>
 </td>
 <td class="table-division">
     {{#unless this.scheduleStatus}}
@@ -33,10 +38,10 @@
     {{/if}}
 </td>
 <td class="table-division">
-    <a href="/edit-trip" class="fa fa-edit table-icon"></a>
+    <a href="/edit-trip/{{this._id}}" class="fa fa-edit table-icon"></a>
 </td>
 <td class="table-division">
-    <a href="" class="fa fa-trash table-icon"></a>
+    <a href="" id="{{this._id}}" class="fa fa-trash table-icon tripDeleteButton"></a>
 </td>
 <td class="table-division">
     <a href="/planthetrip/{{this._id}}" class="fa fa-clipboard-list table-icon"></a>

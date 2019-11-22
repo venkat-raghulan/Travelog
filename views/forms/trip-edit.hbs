@@ -3,13 +3,13 @@
 <div class="main-section">
     <section class="welcome-section">
         <p>
-            Please fill in the details below to create a new trip.
+            Please fill in the details below to edid the trip.
         </p>
     </section>
     <section class="signup-section">
-        <form action="/create-trip" method="POST" class="signup-form">
+        <form action="/edit-trip/{{trip._id}}" method="POST" class="signup-form">
             <label for="oifID">OIF ID</label>
-            <input type="text" name="oifID" placeholder="XX12X">
+            <input type="text" name="oifID" placeholder="XX12X" value="{{trip.oifID}}">
             <label for="college">College ID</label>
             <br>
             <select name="college">
@@ -21,11 +21,11 @@
             <label for="tripDates">Enter Trip Dates (DD-MM-YYYY format seperated by Comma)</label>
             <input type="text" name="tripDates" placeholder="12/10/2019, 13/10/2019, 14/10/2019">
             <label for="numberOfBatches">Enter Number of Batches</label>
-            <input type="number" name="numberOfBatches" placeholder="5">
+            <input type="number" name="numberOfBatches" placeholder="5" value={{trip.numberOfBatches}}>
             <label for="sessionInfo">Enter Session Info</label>
             <input type="text" name="sessionName" placeholder="Session Names here: Ex: S1, S2">
             <input type="text" name="sessionTimings" placeholder="Session Timings here: Ex: 9-11am, 2-4pm">
-            <button type="submit">Create Trip</button>
+            <button type="submit">Edit Trip</button>
         </form>
         <span>To go back to planner dashboard, <a href="/planner">click here</a></span>
     </section>

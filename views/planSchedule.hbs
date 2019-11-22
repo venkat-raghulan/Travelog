@@ -1,9 +1,25 @@
 {{> navbar}}
 
+<br>
+<a href="/planner" class="fa fa-arrow-alt-circle-left table-icon"> Back</a>
+
+<br>
+<br>
+<br>
 
 <span>Finished Planning?</span> <label class="switch">
+    {{#compare trip.scheduleStatus true operator="=="}}
+    <input id="plan-status" type="checkbox" checked>
+    <span class="slider round"></span>
+    {{/compare}}
+    {{#compare trip.scheduleStatus false operator="=="}}
     <input id="plan-status" type="checkbox">
     <span class="slider round"></span>
+    {{/compare}}
+
+    {{!-- <input id="plan-status" type="checkbox" checked>
+    <span class="slider round"></span> --}}
+
 </label>
 <br>
 <br>

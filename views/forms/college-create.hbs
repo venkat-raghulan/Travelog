@@ -21,10 +21,10 @@
             <input type="text" name="spocPhone" placeholder="+33 435 789 3245">
             <label for="BDM">Choose the Business Development Manager</label>
             <br>
-            <select>
+            <select name="BDM">
                 <option disabled selected value> choose BDM </option>
                 {{#each bdmList}}
-                <option>{{this.name}}</option>
+                <option value={{this._id}}>{{this.name}}</option>
                 {{/each}}
             </select>
 

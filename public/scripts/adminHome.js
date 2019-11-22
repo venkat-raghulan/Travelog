@@ -1,3 +1,50 @@
+const service = axios.create();
+
+const allUserDeleteButtons = document.querySelectorAll(".userDeleteButton");
+const allCollegeDeleteButtons = document.querySelectorAll(
+  ".collegeDeleteButton"
+);
+// const str = window.location.pathname;
+
+// const n = str.lastIndexOf("/");
+// const result = str.substring(n + 1);
+
+allUserDeleteButtons.forEach(setupListener1);
+function setupListener1(element) {
+  element.addEventListener("click", deleteUser);
+}
+
+allCollegeDeleteButtons.forEach(setupListener2);
+function setupListener2(element) {
+  element.addEventListener("click", deleteCollege);
+}
+
+// allCollegeDeleteButtons.onclick = deleteCollege;
+
+function removeRow(userID) {
+  let rowID = "row" + userID;
+  document.getElementById(rowID).remove();
+}
+
+function deleteUser(evt) {
+  evt.preventDefault();
+  let userID = evt.target.id;
+
+  service
+    .get(`/delete-user/${userID}`)
+    .then(removeRow(userID))
+    .catch();
+}
+
+function deleteCollege(evt) {
+  evt.preventDefault();
+  let collegeID = evt.target.id;
+  service
+    .get(`/delete-college/${collegeID}`)
+    .then(removeRow(collegeID))
+    .catch();
+}
+
 function openTab(evt, tabName) {
   // Declare all variables
   var i, tabcontent, tablinks;
