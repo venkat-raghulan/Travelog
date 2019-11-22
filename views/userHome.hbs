@@ -4,13 +4,13 @@
     <div class="user-events">
         <h2 class="assignment-title">Upcoming Assignments</h2>
         {{#unless futureTrips}}
-        <div>There are no trips</div>
+        <div>There are no future trips available</div>
         {{/unless}}
         {{#each futureTrips}}
         <div class="card-info hidden">
             <ul>
                 <li><span class="bold">City:</span> {{this.college.city}} </li>
-                <li><span class="bold">College Name:</span> {{this.college.collegeName}} </li>
+                <li><span class="bold">College:</span> {{this.college.collegeName}} </li>
             </ul>
             <ul class="list-sorting">
                 {{{list-dates this.tripDates}}}
@@ -21,11 +21,14 @@
         <div>
         </div>
         <h2 class="assignment-title">Current Assignment</h2>
+        {{#unless currentTrip}}
+        <div>There are no current trips available</div>
+        {{/unless}}
         {{#each currentTrip}}
         <div class="card-info hidden">
             <ul>
                 <li><span class="bold">City:</span> {{this.college.city}} </li>
-                <li><span class="bold">College Name:</span> {{this.college.collegeName}} </li>
+                <li><span class="bold">College:</span> {{this.college.collegeName}} </li>
             </ul>
             <ul class="list-sorting">
                 {{{list-dates this.tripDates}}}
@@ -34,11 +37,14 @@
         </div>
         {{/each}}
         <h2 class=" assignment-title">Previous Assignments</h2>
+        {{#unless previousTrip}}
+        <div>There are no previous trips available</div>
+        {{/unless}}
         {{#each previousTrip}}
         <div class="card-info hidden">
             <ul>
                 <li><span class="bold">City:</span> {{this.college.city}} </li>
-                <li><span class="bold">College Name:</span> {{this.college.collegeName}} </li>
+                <li><span class="bold">College:</span> {{this.college.collegeName}} </li>
             </ul>
             <ul class="list-sorting">
                 {{{list-dates this.tripDates}}}

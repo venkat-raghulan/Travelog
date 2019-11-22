@@ -18,6 +18,7 @@ function formatData(data) {
     <li><span>Contact Name:</span>  ${collegeData.collegeSPOC.name}</li>
     <li><span>Contact Info:</span>  ${collegeData.collegeSPOC.phone}</li>
     </ul></div>
+    <h2 class="schedule-title">Schedules</h2>
     `;
   if (data.schedule.length > 0) {
     data.schedule.forEach(schedule => {
@@ -51,7 +52,7 @@ const viewMore = function(evt) {
   if (viewMore) viewMore.remove();
   divNode.className = "more-information";
   service
-    .get(`https://localhost:5050/home/${assignmentId}`)
+    .get(`/home/${assignmentId}`)
     .then(res => {
       const travelData = res.data;
       divider.appendChild(divNode);

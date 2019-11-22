@@ -17,10 +17,10 @@ router.post("/signup", (req, res, next) => {
 
       const passwordsStrength = zxcPassword(user.password);
 
-      // if (passwordsStrength.score <= ) {
-      //   req.flash("error", "Please enter a better password");
-      //   res.redirect("/signup");
-      // }
+      if (passwordsStrength.score <= 2) {
+        req.flash("error", "Please enter a better password");
+        res.redirect("/signup");
+      }
 
       const salt = bcrypt.genSaltSync(10);
       const hashed = bcrypt.hashSync(user.password, salt);
@@ -46,7 +46,13 @@ router.post("/", (req, res, next) => {
       }
       if (bcrypt.compareSync(user.password, dbRes.password)) {
         req.session.currentUser = dbRes;
-        return res.redirect("/home");
+        if (dbRes.userType.includes("admin")) {
+          return res.redirect("/admin");
+        } else if (dbRes.userType.includes("planner")) {
+          return res.redirect("/planner");
+        } else {
+          return res.redirect("/home");
+        }
       } else {
         return res.redirect("/");
       }

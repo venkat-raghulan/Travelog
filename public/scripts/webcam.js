@@ -1,4 +1,3 @@
-const service = axios.create();
 const pathname = window.location.pathname;
 const id = pathname.substr(17);
 const userId = document.get;
