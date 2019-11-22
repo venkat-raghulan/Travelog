@@ -89,7 +89,7 @@ router.post(
 
     userModel
       .findByIdAndUpdate(id, body)
-      .then(dbRes => {
+      .then(() => {
         res.redirect("/home");
       })
       .catch(err => console.log(err));
@@ -104,7 +104,7 @@ router.get("/home/:id", (req, res, next) => {
     .populate("trainers")
     .then(dbRes => {
       scheduleModel
-        .find({ tripID: dbRes._id, trainer: "5dd2e630637df3131c88683d" }) //req.session.currentUser._id
+        .find({ tripID: dbRes._id, trainer: req.session.currentUser._id })
         .then(schRes => {
           const tripData = {
             trip: dbRes,
