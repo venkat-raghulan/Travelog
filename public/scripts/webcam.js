@@ -39,6 +39,7 @@ function savePic() {
   Webcam.upload(data.image, path, function(code, text) {
     if (code === 200) {
       doc.innerHTML = success;
+      window.location.replace("/home");
     }
     return;
   });
