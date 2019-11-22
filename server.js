@@ -10,10 +10,13 @@ const flash = require("connect-flash");
 const app = express();
 const https = require("https");
 const fs = require("fs");
+const enforce = require("express-sslify");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
+
+app.use(enforce.HTTPS({ trustProtoHeader: true }));
 
 app.use(
   session({
