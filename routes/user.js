@@ -134,7 +134,7 @@ router.post(
     userModel
       .findOneAndUpdate(id, pic)
       .then(() => {
-        res.redirect("/");
+        res.send("Success");
       })
       .catch(err => console.log(err));
   }

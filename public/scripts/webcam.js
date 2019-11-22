@@ -22,7 +22,7 @@ let data = {
   image: "url"
 };
 const doc = document.querySelector(".camera-container");
-const path = `/profile-picture/${id}?image_fmt=jpeg`;
+const path = `/profile-picture/${id}`;
 
 function takePic() {
   Webcam.snap(data_uri => {
@@ -40,6 +40,7 @@ function savePic() {
     if (code === 200) {
       doc.innerHTML = success;
     }
+    return;
   });
 }
 const saveButton = document.querySelector(".save-pic");
