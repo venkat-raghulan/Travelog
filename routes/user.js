@@ -133,7 +133,7 @@ router.post(
     console.log("heeere", req.session.currentUser, req.file.url);
     const pic = { profilePicture: req.file.url };
     userModel
-      .findOneAndUpdate(req.session.currentUser._id, pic)
+      .findByIdAndUpdate(req.session.currentUser._id, pic)
       .then(() => {
         res.send("Success");
       })
