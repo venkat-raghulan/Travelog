@@ -3,9 +3,12 @@
 </head>
 
 <div class="nav-bar">
-    <a href="/home">Dashboard</a>
+    <div class="navigate">
+        <a href="/home">Dashboard</a>
+        {{{nav-bar user.userType}}}
+    </div>
     <div class="edit-nav">
-        <a href="/profile-picture/{{user._id}}" id="create-profile-pic">New Profile Pircture</a>
+        <a href="/profile-picture/{{user._id}}" id="create-profile-pic"><i class="fas fa-camera"></i></a>
         <a href="/edit-profile/{{user._id}}"><img src=" {{user.profilePicture}} " alt="User Picture"></a>
         <a href="/logout">LogOut</a>
     </div>

@@ -46,13 +46,14 @@ router.post("/", (req, res, next) => {
       }
       if (bcrypt.compareSync(user.password, dbRes.password)) {
         req.session.currentUser = dbRes;
-        if (dbRes.userType.includes("admin")) {
-          return res.redirect("/admin");
-        } else if (dbRes.userType.includes("planner")) {
-          return res.redirect("/planner");
-        } else {
-          return res.redirect("/home");
-        }
+        // if (dbRes.userType.includes("Admin")) {
+        //   return res.redirect("/admin");
+        // } else if (dbRes.userType.includes("Planner")) {
+        //   return res.redirect("/planner");
+        // } else {
+        //   return res.redirect("/home");
+        // }
+        return res.redirect("/home");
       } else {
         return res.redirect("/");
       }

@@ -10,10 +10,13 @@ const flash = require("connect-flash");
 const app = express();
 const https = require("https");
 const fs = require("fs");
+const enforce = require("express-sslify");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
+
+// app.use(enforce.HTTPS({ trustProtoHeader: true }));
 
 app.use(
   session({
@@ -50,14 +53,14 @@ app.use(userRouter);
 app.use(adminRouter);
 app.use(plannerRouter);
 
-https
-  .createServer(
-    {
-      key: fs.readFileSync("server.key"),
-      cert: fs.readFileSync("server.cert")
-    },
-    app
-  )
-  .listen(process.env.PORT, () => {
-    console.log(`app started at ${process.env.SITE_URL}:${process.env.PORT}`);
-  });
+// https
+//   .createServer(
+//     {
+//       key: fs.readFileSync("server.key"),
+//       cert: fs.readFileSync("server.cert")
+//     },
+//     app
+//   )
+app.listen(process.env.PORT, () => {
+  console.log(`app started at ${process.env.SITE_URL}:${process.env.PORT}`);
+});

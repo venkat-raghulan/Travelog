@@ -125,3 +125,13 @@ hbs.registerHelper("list-dates", function(dates) {
 
   return `<li><span class="bold">Start Date: </span> ${dateArray[0]}</li><li><span class="bold"> End Date: </span> ${dateArray[1]}</li>`;
 });
+
+hbs.registerHelper("nav-bar", function(user) {
+  if (user.includes("Admin") && user.includes("Planner")) {
+    return `<a href="/admin">Admin</a><a href="/planner">Planner</a>`;
+  } else if (user.includes("Admin")) {
+    return `<a href="/admin">Admin</a>`;
+  } else if (user.includes("Planner")) {
+    return `<a href="/planner">Planner</a>`;
+  }
+});

@@ -129,12 +129,13 @@ router.post(
   "/profile-picture/:id",
   uploadCloud.single("webcam"),
   (req, res, next) => {
-    const id = req.params.id;
+    // const id = req.params.id;
+    console.log("heeere", req.session.currentUser, req.file.url);
     const pic = { profilePicture: req.file.url };
     userModel
-      .findOneAndUpdate(id, pic)
+      .findByIdAndUpdate(req.session.currentUser._id, pic)
       .then(() => {
-        res.redirect("/");
+        res.send("Success");
       })
       .catch(err => console.log(err));
   }
