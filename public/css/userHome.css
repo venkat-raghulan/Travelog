@@ -7,7 +7,6 @@
 
 .user-events {
   width: 40%;
-  border-right: 1.5px solid grey;
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -22,11 +21,11 @@
   width: 90%;
   font-size: 30px;
   border: 1px solid grey;
+  text-align: center;
   border-radius: 7px;
-  box-shadow: 1px 1px grey;
+  background-color: whitesmoke;
   margin: 10px 0;
   padding: 10px;
-  /* text-align: center; */
 }
 
 .card-info {
@@ -35,14 +34,17 @@
   font-size: 16px;
   justify-content: space-between;
   line-height: 20px;
-  width: 87%;
+  width: 80%;
   border: 1px solid grey;
   border-radius: 7px;
   box-shadow: 1px 1px grey;
   margin: 10px 0;
   padding: 10px;
+  background-color: whitesmoke;
 }
-
+.card-info:active {
+  transform: scale(0.9);
+}
 .see-more {
   border: none;
   background: none;
@@ -103,4 +105,9 @@
 .schedule-data ul {
   line-height: 22px;
   font-size: 16px;
+}
+.schedule-title {
+  padding: 15px;
+  font-size: 25px;
+  margin: 0 auto;
 }

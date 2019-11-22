@@ -8,6 +8,8 @@ const hbs = require("hbs");
 const session = require("express-session");
 const flash = require("connect-flash");
 const app = express();
+const https = require("https");
+const fs = require("fs");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -19,7 +21,7 @@ app.use(
     saveUninitialized: true,
     resave: true,
     cookie: {
-      maxAge: 600000
+      maxAge: 6000000
     }
   })
 );
@@ -48,6 +50,14 @@ app.use(userRouter);
 app.use(adminRouter);
 app.use(plannerRouter);
 
-app.listen(process.env.PORT, () => {
-  console.log(`app started at ${process.env.SITE_URL}:${process.env.PORT}`);
-});
+https
+  .createServer(
+    {
+      key: fs.readFileSync("server.key"),
+      cert: fs.readFileSync("server.cert")
+    },
+    app
+  )
+  .listen(process.env.PORT, () => {
+    console.log(`app started at ${process.env.SITE_URL}:${process.env.PORT}`);
+  });

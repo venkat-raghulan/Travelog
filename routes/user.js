@@ -77,7 +77,6 @@ router.post(
   (req, res, next) => {
     const id = req.session.currentUser;
     const body = {
-      profilePicture: req.body.profilePicture,
       email: req.body.email,
       contactNumber: req.body.contactNumber,
       password: req.body.password
@@ -117,5 +116,28 @@ router.get("/home/:id", (req, res, next) => {
     })
     .catch(err => console.log(err));
 });
+
+router.get("/profile-picture/:id", (req, res, next) => {
+  res.render("profilePic", {
+    user: req.session.currentUser,
+    scripts: ["webcam"],
+    css: ["profilepic"]
+  });
+});
+
+router.post(
+  "/profile-picture/:id",
+  uploadCloud.single("webcam"),
+  (req, res, next) => {
+    const id = req.params.id;
+    const pic = { profilePicture: req.file.url };
+    userModel
+      .findOneAndUpdate(id, pic)
+      .then(() => {
+        res.redirect("/");
+      })
+      .catch(err => console.log(err));
+  }
+);
 
 module.exports = router;

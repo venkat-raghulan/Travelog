@@ -1,0 +1,54 @@
+.camera-container {
+  display: flex;
+  align-items: center;
+  margin: 50px;
+}
+
+.camera {
+  margin-right: 50px;
+}
+.save-pic,
+.take-pic {
+  width: 150px;
+  height: 50px;
+  background-color: grey;
+  border: none;
+  align-self: center;
+  margin-top: 25px;
+  color: white;
+}
+.save-pic:active,
+.take-pic:active {
+  transform: scale(0.9);
+}
+.image,
+.camera {
+  display: flex;
+  flex-direction: column;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+#my_camera {
+  border: 2px solid black;
+}
+
+.success {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 30px;
+  width: 100%;
+  height: calc(100vh - 200px);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.success h1 {
+  margin-bottom: 40px;
+}
+.success a {
+  text-decoration: none;
+  color: #f05136;
+}
