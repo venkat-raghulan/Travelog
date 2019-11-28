@@ -102,7 +102,7 @@ router.get("/edit-trip/:id", (req, res, next) => {
   collegeModel
     .find()
     .then(dbRes => {
-      console.log(dbRes);
+      // console.log(dbRes);
       tripModel
         .findById(req.params.id)
         .then(dbRes1 => {
@@ -126,6 +126,7 @@ router.get("/planthetrip/:id", (req, res) => {
       scheduleModel
         .find({ tripID: req.params.id })
         .then(dbRes1 => {
+          // console.log(dbRes1);
           res.render("planSchedule", {
             user: req.session.currentUser,
             trip: dbRes,
@@ -170,19 +171,19 @@ router.get("/update-trainer", (req, res) => {
           new: true,
           upsert: true // Make this update into an upsert
         })
-        .then()
+        .then(dbRes => res.send(dbRes))
         .catch(dbErr => console.log(dbErr));
     })
     .catch(dbErr => console.log(dbErr));
 });
 
 router.get("/update-topic", (req, res) => {
+  // console.log(req.query.topic);
   let filter = {
     tripID: req.query.id,
     date: req.query.date,
     "batchName.batch": req.query.batch,
-    "sessionName.name": req.query.sessionName,
-    "sessionName.timings": req.query.sessionTimings
+    "sessionName.name": req.query.sessionName
   };
 
   let update = {
@@ -193,14 +194,16 @@ router.get("/update-topic", (req, res) => {
       new: true,
       upsert: true // Make this update into an upsert
     })
-    .then()
+    .then(dbRes => {
+      res.send(dbRes);
+    })
     .catch(dbErr => console.log(dbErr));
 });
 
 router.get("/delete-trip/:id", (req, res, next) => {
   tripModel
     .findByIdAndDelete(req.params.id)
-    .then(dbRes => console.log(dbRes))
+    .then(dbRes => res.send(dbRes))
     .catch(dbErr => console.log(dbErr));
 });
 

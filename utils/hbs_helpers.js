@@ -60,10 +60,12 @@ hbs.registerHelper("create-inputs", function(
 
       tpl += options;
     });
+
+    console.log(topic);
     // Create input for entering topic
     tpl += `</select>
       <input type="text" class="schedule-topic" data-batch=B${i +
-        1} name="topic" placeholder="Enter Topic" ${dataString} value=${topic}>
+        1} name="topic" placeholder="Enter Topic" ${dataString} value="${topic}">
   </td>`;
   }
   return tpl;
