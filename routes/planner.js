@@ -144,7 +144,7 @@ router.get("/planthetrip/:id", (req, res) => {
 router.get("/update-status", (req, res) => {
   tripModel
     .findByIdAndUpdate(req.query.id, { scheduleStatus: req.query.status })
-    .then()
+    .then(dbRes => res.send(dbRes))
     .catch(dbErr => console.log(dbErr));
 });
 
